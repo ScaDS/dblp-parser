@@ -1,12 +1,13 @@
-package org.dblp.parser;
+package org.dblp.example;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import org.dblp.datastructures.*;
 import org.dblp.datastructures.converter.DblpElementConverter;
+import org.dblp.parser.DblpElementProcessor;
+import org.dblp.parser.DblpParser;
+import org.dblp.parser.ParsingTerminationException;
 import org.xml.sax.SAXException;
-
-import java.util.Map;
 
 /**
  * This is a simple example implementation which extracts the statistics for the first N elements from the dblp
