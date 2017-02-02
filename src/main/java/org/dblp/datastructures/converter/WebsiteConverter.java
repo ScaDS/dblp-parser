@@ -31,9 +31,12 @@ public class WebsiteConverter implements DblpElementConverter<Website> {
     private void setAuthor(Website www, DblpElement element) {
         String key = "author";
         String key2 = "editor";
-        www.author = ConverterUtils.extract(key, element);
-        if(www.author == null) {
-            www.author = ConverterUtils.extract(key2, element);;
+        if(ConverterUtils.extract(key, element) != null) {
+            www.authors.add(ConverterUtils.extract(key, element));
+        } else {
+            if(ConverterUtils.extract(key2, element) != null) {
+                www.authors.add(ConverterUtils.extract(key2, element));
+            }
         }
         www.attributes.removeAll(key);
         www.attributes.removeAll(key2);

@@ -59,7 +59,7 @@ public class ProceedingsConverter implements DblpElementConverter<Proceedings> {
         Collection<String> attributes = element.attributes.get(key);
 
         for(String editor : attributes) {
-            proceedings.editors.add(editor);
+            proceedings.authors.add(editor);
         }
         proceedings.attributes.removeAll(key);
     }

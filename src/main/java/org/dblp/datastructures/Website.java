@@ -4,14 +4,12 @@ package org.dblp.datastructures;
  *
  */
 public class Website extends DblpElement {
-    public String key;
-    public String author;
-    public String title;
     public String url;
     public String note;
     public String year;
 
     public Website () {
+        super();
         this.type = DblpElementType.WEBSITE;
     }
 
@@ -19,7 +17,7 @@ public class Website extends DblpElement {
     public String toString() {
         return "Website{" +
                 "key='" + key + '\'' +
-                ", author='" + author + '\'' +
+                ", author='" + authors + '\'' +
                 ", title='" + title + '\'' +
                 ", url='" + url + '\'' +
                 ", note='" + note + '\'' +

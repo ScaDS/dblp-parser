@@ -7,17 +7,14 @@ import java.util.List;
  *
  */
 public class Article extends DblpElement {
-    public String key;
     public String journal;
     public String volume;
-    public List<String> authors;
-    public String title;
     public String month;
     public String year;
 
     public Article () {
+        super();
         this.type = DblpElementType.ARTICLE;
-        this.authors = new ArrayList<>();
     }
 
     @Override

@@ -7,9 +7,6 @@ import java.util.List;
  *
  */
 public class Book extends DblpElement {
-    public String key;
-    public String title = "";
-    public List<String> authors;
     public String series;
     public String year;
     public List<String> isbns;
@@ -17,8 +14,8 @@ public class Book extends DblpElement {
     public String url;
 
     public Book() {
+        super();
         this.type = DblpElementType.BOOK;
-        this.authors = new ArrayList<>();
         this.isbns = new ArrayList<>();
     }
 

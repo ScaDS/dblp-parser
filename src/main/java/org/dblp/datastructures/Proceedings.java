@@ -7,21 +7,17 @@ import java.util.List;
  *
  */
 public class Proceedings extends DblpElement {
-    public String key;
     public String series;
     public String booktitle;
-    public String title;
     public String volume;
-    public List<String> editors;
     public String year;
     public String isbn;
     public String publisher;
     public String url;
 
     public Proceedings() {
+        super();
         this.type = DblpElementType.PROCEEDINGS;
-        this.editors = new ArrayList<>();
-        this.title = "";
     }
 
     @Override
@@ -32,7 +28,7 @@ public class Proceedings extends DblpElement {
                 ", booktitle='" + booktitle + '\'' +
                 ", title='" + title + '\'' +
                 ", volume='" + volume + '\'' +
-                ", editors='" + editors + '\'' +
+                ", editors/authors='" + authors + '\'' +
                 ", year='" + year + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", publisher='" + publisher + '\'' +

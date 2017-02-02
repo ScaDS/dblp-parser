@@ -7,18 +7,15 @@ import java.util.List;
  *
  */
 public class Inproceedings extends DblpElement {
-    public String key;
-    public String title;
     public String month;
     public String year;
     public String pages;
     public String conference;
-    public List<String> authors;
     public List<String> citations;
 
     public Inproceedings() {
+        super();
         this.type = DblpElementType.INPROCEEDINGS;
-        this.authors = new ArrayList<>();
         this.citations = new ArrayList<>();
     }
 

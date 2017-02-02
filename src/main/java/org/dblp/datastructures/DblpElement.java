@@ -4,6 +4,9 @@ package org.dblp.datastructures;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The raw DBLP element
  */
@@ -11,12 +14,23 @@ public class DblpElement {
     public DblpElementType type;
     public Multimap<String, String> attributes;
 
-    protected DblpElement () {
+    // shared fields
+    public String key;
+    public String title;
+    public List<String> authors;
 
+    protected DblpElement () {
+        initialize();
     }
 
     public DblpElement (DblpElementType type) {
         this.type = type;
+        initialize();
+    }
+
+    private void initialize() {
+        authors = new ArrayList<>();
+        title = "";
         this.attributes = ArrayListMultimap.create();
     }
 

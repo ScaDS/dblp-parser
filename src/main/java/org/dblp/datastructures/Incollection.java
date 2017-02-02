@@ -7,21 +7,17 @@ import java.util.List;
  *
  */
 public class Incollection extends DblpElement {
-    public String key;
-    public String title;
     public String booktitle;
     public String url;
     public String electronicEdition;
 
     public String pages;
     public String year;
-    public List<String> authors;
     public String crossref;
 
     public Incollection () {
+        super();
         this.type = DblpElementType.INCOLLECTION;
-
-        authors = new ArrayList<>();
     }
 
     @Override
