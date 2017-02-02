@@ -12,7 +12,8 @@ This Library provides POJOs for all relevant elements:
 
 #### Install
 To install the library you need a local maven repository and a current version of gradle.
-Steps:
+Steps
+
 1. Checkout of dblp-parser to local repository
 2. navigate to the project folder
 3. execute the install task of gradle, e.g. at the console with ```gradle install```
