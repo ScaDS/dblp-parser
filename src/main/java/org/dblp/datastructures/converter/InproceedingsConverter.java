@@ -12,6 +12,21 @@ public class InproceedingsConverter implements DblpElementConverter<Inproceeding
     private final List<String> titleKeys = Arrays.asList("title", "sub", "sup", "i", "tt");
 
     @Override
+    public Inproceedings convertEssentials(DblpElement element) {
+        Inproceedings inproc = new Inproceedings();
+
+        inproc.attributes = element.attributes;
+
+        // the set operations will also remove the entries from the "inproceedings" attributes
+        // therefore only unused attributes will remain.
+        setKey(inproc, element);
+        setTitle(inproc, element);
+        setAuthors(inproc, element);
+
+        return inproc;
+    }
+
+    @Override
     public Inproceedings convert(DblpElement element) {
         Inproceedings inproc = new Inproceedings();
 

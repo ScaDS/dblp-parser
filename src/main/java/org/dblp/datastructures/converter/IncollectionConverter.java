@@ -8,9 +8,21 @@ import java.util.Collection;
 import java.util.Optional;
 
 /**
- *
+ * Converts a {@link DblpElement} to an {@link Incollection} element.
  */
 public class IncollectionConverter implements DblpElementConverter<Incollection> {
+    @Override
+    public Incollection convertEssentials(DblpElement element) {
+        Incollection incollect = new Incollection();
+        incollect.attributes = element.attributes;
+
+        setKey(incollect, element);
+        setTitle(incollect, element);
+        setAuthors(incollect, element);
+
+        return incollect;
+    }
+
     @Override
     public Incollection convert(DblpElement element) {
         Incollection incollect = new Incollection();
@@ -25,7 +37,6 @@ public class IncollectionConverter implements DblpElementConverter<Incollection>
         setBooktitle(incollect, element);
         setAuthors(incollect, element);
         setCrossref(incollect, element);
-         
         
         return incollect;
     }

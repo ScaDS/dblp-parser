@@ -6,10 +6,23 @@ import org.dblp.datastructures.DblpElement;
 import java.util.*;
 
 /**
- *
+ * Converts a {@link DblpElement} to an {@link Article} element.
  */
 public class ArticleConverter implements DblpElementConverter<Article> {
     private final List<String> titleKeys = Arrays.asList("title", "sub", "sup", "i", "tt");
+
+    @Override
+    public Article convertEssentials(DblpElement element) {
+        Article article = new Article();
+
+        article.attributes = element.attributes;
+
+        setKey(article, element);
+        setTitle(article, element);
+        setAuthors(article, element);
+
+        return article;
+    }
 
     @Override
     public Article convert(DblpElement element) {

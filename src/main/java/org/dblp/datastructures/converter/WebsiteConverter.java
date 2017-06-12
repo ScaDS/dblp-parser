@@ -4,9 +4,21 @@ import org.dblp.datastructures.DblpElement;
 import org.dblp.datastructures.Website;
 
 /**
- *
+ * Converts a {@link DblpElement} to an {@link Website} element.
  */
 public class WebsiteConverter implements DblpElementConverter<Website> {
+    @Override
+    public Website convertEssentials(DblpElement element) {
+        Website www = new Website();
+        www.attributes = element.attributes;
+
+        setKey(www, element);
+        setAuthor(www, element);
+        setTitle(www, element);
+
+        return www;
+    }
+
     @Override
     public Website convert(DblpElement element) {
         Website www = new Website();

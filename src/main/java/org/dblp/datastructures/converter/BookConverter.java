@@ -6,10 +6,23 @@ import org.dblp.datastructures.DblpElement;
 import java.util.*;
 
 /**
- *
+ * Converts a {@link DblpElement} to an {@link Book} element.
  */
 public class BookConverter implements DblpElementConverter<Book> {
     private final List<String> authorKeys = Arrays.asList("editor", "author");
+
+    @Override
+    public Book convertEssentials(DblpElement element) {
+        Book book = new Book();
+
+        book.attributes = element.attributes;
+
+        setKey(book, element);
+        setTitle(book, element);
+        setAuthor(book, element);
+
+        return book;
+    }
 
     @Override
     public Book convert(DblpElement element) {
@@ -25,7 +38,6 @@ public class BookConverter implements DblpElementConverter<Book> {
         setIsbns(book, element);
         setPublisher(book, element);
         setUrl(book, element);
-
 
         return book;
     }

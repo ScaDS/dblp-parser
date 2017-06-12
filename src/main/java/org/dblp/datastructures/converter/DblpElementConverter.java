@@ -10,6 +10,8 @@ import org.dblp.datastructures.DblpElementType;
  */
 public interface DblpElementConverter<T extends DblpElement> {
 
+    T convertEssentials(DblpElement element);
+
     T convert(DblpElement element);
 
 }

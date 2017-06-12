@@ -7,9 +7,22 @@ import java.util.Collection;
 
 
 /**
- * Created by kricke on 24.01.17.
+ * Converts a {@link DblpElement} to an {@link Proceedings} element.
  */
 public class ProceedingsConverter implements DblpElementConverter<Proceedings> {
+    @Override
+    public Proceedings convertEssentials(DblpElement element) {
+        Proceedings proceedings = new Proceedings();
+
+        proceedings.attributes = element.attributes;
+
+        setKey(proceedings, element);
+        setTitle(proceedings, element);
+        setEditors(proceedings, element);
+
+        return proceedings;
+    }
+
     @Override
     public Proceedings convert(DblpElement element) {
         Proceedings proceedings = new Proceedings();
