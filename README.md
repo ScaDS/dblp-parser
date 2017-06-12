@@ -17,6 +17,10 @@ Steps
 1. Checkout of dblp-parser to local repository
 2. navigate to the project folder
 3. execute the install task of gradle, e.g. at the console with ```gradle install```
-4. finished
-5. Include it in your project, e.g. with gradle: 
-   ```compile group: 'org.dblp', name: 'dblp-parser', version: '0.1.0'```
+5. add to your build.gradle: 
+   ```
+   repositories {
+      mavenLocal()
+   }
+   compile group: 'org.dblp', name: 'dblp-parser', version: '0.1.0'
+   ```
