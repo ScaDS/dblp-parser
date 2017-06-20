@@ -14,12 +14,14 @@ public class DblpParserHandler extends DefaultHandler {
     private final DblpElementProcessor processor;
     private DblpElement curElement = null;
     private String curRawName = null;
+    private StringBuilder bufferedElement = new StringBuilder();
 
 
     DblpParserHandler(DblpElementProcessor processor) {
         this.processor = processor;
     }
 
+    @Override
     public void startElement(String namespaceURI, String localName, String rawName, Attributes atts) throws SAXException {
 
         // identify the type and start new curElement
@@ -41,13 +43,22 @@ public class DblpParserHandler extends DefaultHandler {
 
     }
 
+    @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
+//        String chString = new String(ch, start, length);
+//        if(chString.contains("Anika Gro")) {
+//            System.out.println("Anika detected: " + chString + "|" + start + "|" + length);
+//            System.out.println("==========================================================");
+//        }
+
         if(curElement != null) {
             String str = new String(ch, start, length).trim();
-            curElement.addAttribute(curRawName, str);
+            bufferedElement.append(str);
+//            curElement.addAttribute(curRawName, str);
         }
     }
 
+    @Override
     public void endElement(String namespaceURI, String localName, String rawName) throws SAXException {
         // identify the type
         DblpElementType type = DblpElementType.dblpElementType(rawName);
@@ -60,6 +71,11 @@ public class DblpParserHandler extends DefaultHandler {
         } else if (type != null && type != curElement.getType()) {
             throw new IllegalStateException("Tries to close outer element but is not active element!"
                     + type + " vs " + curElement.getType());
+        } else {
+            if(curElement != null) {
+                curElement.addAttribute(curRawName, bufferedElement.toString());
+                bufferedElement = new StringBuilder();
+            }
         }
     }
 
@@ -69,16 +85,19 @@ public class DblpParserHandler extends DefaultHandler {
                 + exception.getMessage());
     }
 
+    @Override
     public void warning(SAXParseException exception) throws SAXException {
         Message("**Parsing Warning**\n", exception);
         throw new SAXException("Warning encountered");
     }
 
+    @Override
     public void error(SAXParseException exception) throws SAXException {
         Message("**Parsing Error**\n", exception);
         throw new SAXException("Error encountered");
     }
 
+    @Override
     public void fatalError(SAXParseException exception) throws SAXException {
         Message("**Parsing Fatal Error**\n", exception);
         throw new SAXException("Fatal Error encountered");
