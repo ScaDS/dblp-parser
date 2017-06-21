@@ -29,7 +29,6 @@ public class DblpParser {
 			InputSource is = new InputSource(inputStream);
 			is.setEncoding("ISO-8859-1");
 			parser.parse(is, handler);
-//			parser.parse(file, handler);
 		} catch (IOException e) {
 			System.out.println("Error reading URI: " + e.getMessage());
 		} catch(ParsingTerminationException e) {

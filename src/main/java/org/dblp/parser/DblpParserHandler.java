@@ -45,16 +45,9 @@ public class DblpParserHandler extends DefaultHandler {
 
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
-//        String chString = new String(ch, start, length);
-//        if(chString.contains("Anika Gro")) {
-//            System.out.println("Anika detected: " + chString + "|" + start + "|" + length);
-//            System.out.println("==========================================================");
-//        }
-
         if(curElement != null) {
             String str = new String(ch, start, length).trim();
             bufferedElement.append(str);
-//            curElement.addAttribute(curRawName, str);
         }
     }
 
