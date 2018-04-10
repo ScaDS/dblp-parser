@@ -9,6 +9,8 @@ This Library provides POJOs for all relevant elements:
 + Inproceedings
 + Book
 + Website
++ MastersThesis
++ PhDThesis
 
 #### Install
 To install the library you need a local maven repository and a current version of gradle.
@@ -22,5 +24,5 @@ Steps
    repositories {
       mavenLocal()
    }
-   compile group: 'org.dblp', name: 'dblp-parser', version: '0.1.0'
+   compile group: 'org.dblp', name: 'dblp-parser', version: '0.2.2'
    ```
