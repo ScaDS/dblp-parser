@@ -20,6 +20,7 @@ public class ArticleConverter implements DblpElementConverter<Article> {
         setKey(article, element);
         setTitle(article, element);
         setAuthors(article, element);
+        setUrl(article, element);
 
         return article;
     }
@@ -88,9 +89,15 @@ public class ArticleConverter implements DblpElementConverter<Article> {
         String key = "author";
         Collection<String> attributes = element.attributes.get(key);
 
-        for(String author : attributes) {
-            article.authors.add(author);
-        }
+        article.authors.addAll(attributes);
+        article.attributes.removeAll(key);
+    }
+
+    private void setUrl(Article article, DblpElement element) {
+        String key = "url";
+        Collection<String> attributes = element.attributes.get(key);
+
+        article.authors.addAll(attributes);
         article.attributes.removeAll(key);
     }
 }

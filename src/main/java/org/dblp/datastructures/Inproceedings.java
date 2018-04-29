@@ -12,6 +12,7 @@ public class Inproceedings extends DblpElement {
     public String pages;
     public String conference;
     public List<String> citations;
+    public String crossref;
 
     public Inproceedings() {
         super();

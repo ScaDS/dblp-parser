@@ -42,6 +42,7 @@ public class InproceedingsConverter implements DblpElementConverter<Inproceeding
         setConference(inproc, element);
         setAuthors(inproc, element);
         setCitations(inproc, element);
+        setCrossref(inproc, element);
 
         return inproc;
     }
@@ -93,9 +94,7 @@ public class InproceedingsConverter implements DblpElementConverter<Inproceeding
         String key = "author";
         Collection<String> attributes = element.attributes.get(key);
 
-        for(String author : attributes) {
-            inproc.authors.add(author);
-        }
+        inproc.authors.addAll(attributes);
         inproc.attributes.removeAll(key);
     }
 
@@ -104,10 +103,15 @@ public class InproceedingsConverter implements DblpElementConverter<Inproceeding
         Collection<String> attributes = element.attributes.get(key);
 
         if(attributes != null) {
-            for (String citation : attributes) {
-                inproc.citations.add(citation);
-            }
+            inproc.citations.addAll(attributes);
             inproc.attributes.removeAll(key);
         }
+    }
+
+    private void setCrossref(Inproceedings inproc, DblpElement element)
+    {
+        String key = "crossref";
+        inproc.crossref = ConverterUtils.extract(key, element);
+        inproc.attributes.removeAll(key);
     }
 }

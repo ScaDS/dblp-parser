@@ -11,6 +11,7 @@ public class Article extends DblpElement {
     public String volume;
     public String month;
     public String year;
+    public String url;
 
     public Article () {
         super();

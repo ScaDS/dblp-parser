@@ -3,6 +3,8 @@ package org.dblp.datastructures.converter;
 import org.dblp.datastructures.DblpElement;
 import org.dblp.datastructures.Website;
 
+import java.util.Collection;
+
 /**
  * Converts a {@link DblpElement} to an {@link Website} element.
  */
@@ -43,13 +45,9 @@ public class WebsiteConverter implements DblpElementConverter<Website> {
     private void setAuthor(Website www, DblpElement element) {
         String key = "author";
         String key2 = "editor";
-        if(ConverterUtils.extract(key, element) != null) {
-            www.authors.add(ConverterUtils.extract(key, element));
-        } else {
-            if(ConverterUtils.extract(key2, element) != null) {
-                www.authors.add(ConverterUtils.extract(key2, element));
-            }
-        }
+        www.authors.addAll(element.attributes.get(key));
+        www.authors.addAll(element.attributes.get(key2));
+
         www.attributes.removeAll(key);
         www.attributes.removeAll(key2);
     }
@@ -63,17 +61,15 @@ public class WebsiteConverter implements DblpElementConverter<Website> {
     private void setUrl(Website www, DblpElement element) {
         String key = "url";
         String key2 = "ee";
-        www.url = ConverterUtils.extract(key, element);
-        if(www.url == null) {
-            www.url = ConverterUtils.extract(key2, element);
-        }
+        www.url.addAll(element.attributes.get(key));
+        www.url.addAll(element.attributes.get(key2));
         www.attributes.removeAll(key);
         www.attributes.removeAll(key2);
     }
 
     private void setNote(Website www, DblpElement element) {
         String key = "note";
-        www.note = ConverterUtils.extract(key, element);
+        www.note.addAll(element.attributes.get(key));
         www.attributes.removeAll(key);
     }
 
