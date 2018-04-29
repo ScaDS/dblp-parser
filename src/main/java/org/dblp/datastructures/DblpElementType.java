@@ -12,6 +12,8 @@ public enum DblpElementType {
     INCOLLECTION("incollection", new IncollectionConverter()),
     WEBSITE("www", new WebsiteConverter()),
     BOOK("book", new BookConverter()),
+    MASTERSTHESIS("mastersthesis", new MastersThesisConverter()),
+    PHDTHESIS("phdthesis", new PhDThesisConverter()),
     ;
 
     private String identifier = null;

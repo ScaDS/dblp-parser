@@ -3,30 +3,24 @@ package org.dblp.datastructures;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- */
-public class Article extends DblpElement {
-    public String journal;
-    public String volume;
-    public String month;
+public class PhDThesis extends DblpElement
+{
+    public List<String> schools;
     public String year;
-    public String url;
 
-    public Article () {
+    public PhDThesis() {
         super();
-        this.type = DblpElementType.ARTICLE;
+        this.type = DblpElementType.PHDTHESIS;
+        schools = new ArrayList<>();
     }
 
     @Override
     public String toString() {
         return "Article{" +
                 "key='" + key + '\'' +
-                ", journal='" + journal + '\'' +
-                ", volume='" + volume + '\'' +
+                ", schools='" + schools + '\'' +
                 ", authors=" + authors +
                 ", title='" + title + '\'' +
-                ", month='" + month + '\'' +
                 ", year='" + year + '\'' +
                 "} " + super.toString();
     }
